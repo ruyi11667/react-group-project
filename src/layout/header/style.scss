@@ -1,0 +1,44 @@
+.app-header{
+  display: flex;
+  flex-direction: row;
+  .logo {
+    width: 250px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .h3Logo {
+      color: #333;
+      font-weight: 600;
+      font-size: 16px;
+      margin-left: 15px;
+      line-height: 64px;
+    }
+  }
+  .userLogo {
+    width: 200px;
+    float: right;
+    background: red;
+  }
+  .menu{
+    flex: 1;
+    display: flex;
+    .title{
+      margin: 0 10px;
+    }
+  }
+  
+}
+
+.ant-menu-item .anticon, .ant-menu-submenu-title .anticon {
+  margin-right: 0;
+}
+.ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
+  flex: 1;
+  text-align: center;
+}
+.ant-layout-header {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
