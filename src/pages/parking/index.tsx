@@ -36,6 +36,7 @@ const Parking: React.FC<{}> = function Parking(){
       <Layout 
         style={{
           background: "#F3F3F3",
+          height: "100%"
         }}
       >
         <Sider
@@ -46,7 +47,6 @@ const Parking: React.FC<{}> = function Parking(){
             background: "#fff",
             padding: "24px 0",
             margin: "0 10px",
-            minHeight: 280
           }}
         >
           <h1>停车场管理</h1>

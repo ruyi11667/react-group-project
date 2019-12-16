@@ -21,7 +21,7 @@ const App: React.FC<{}> = function App() {
             style={{
               background: "#fff",
               margin: 0,
-              minHeight: 280
+              height: "100%"
             }}
           >
             {/* 懒加载 */}
