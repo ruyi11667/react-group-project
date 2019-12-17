@@ -2,10 +2,9 @@ import React, { Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
 import { Layout } from "antd";
-import Header from "./layout/header";
-import Sider from "./layout/sider";
-import routes from "./routes";
-import Loading from "./pages/common/loading";
+import Header from "@layout/header";
+import routes from "@routes/index";
+import Loading from "@pages/common/loading";
 const { Content } = Layout;
 
 const App: React.FC<{}> = function App() {
