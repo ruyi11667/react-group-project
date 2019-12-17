@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    // 配置路径别名
+    "paths": {
+      "@pages/*": ["./src/pages/*"],
+      "@layout/*": ["./src/layout/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@style/*": ["./src/style/*"]
+    },
     "target": "es5",
     "lib": [
       "dom",

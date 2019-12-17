@@ -1,13 +1,13 @@
 import React, {useCallback}from 'react'
 import './style.scss'
 import {useHistory} from 'react-router'
-import { Layout, Menu, Avatar, Button} from 'antd';
+import { Layout, Menu, Button} from 'antd';
 const { Header } = Layout;
 
 const AppHeader: React.FC<{}> = function AppHeader(){
   let headerList = [
     {id: '1', title: '首页', path: '/home'},
-    {id: '2', title: '停车厂管理', path: '/parking'},
+    {id: '2', title: '停车厂管理', path: '/parking/parkManage'},
     {id: '3', title: '数据统计', path: '/dataCount'},
     {id: '4', title: '系统管理', path: '/system'},
   ]
