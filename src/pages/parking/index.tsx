@@ -1,5 +1,5 @@
 import React, { Suspense, PropsWithChildren } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Layout } from "antd";
 import { renderRoutes } from "react-router-config";
 import Sider from "@layout/sider";
@@ -7,7 +7,6 @@ import Loading from "@pages/common/loading";
 const { Content } = Layout;
 
 const Parking: React.FC<PropsWithChildren<any>> = function Parking(props) {
-  console.log(props.route);
 
   const arrList = [
     {
