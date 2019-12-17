@@ -1,11 +1,32 @@
-import React from 'react'
-import { Layout, Menu, Icon } from 'antd';
-import './style.scss'
+import React from "react";
+import { NavLink } from 'react-router-dom'
+import { Layout, Menu, Icon } from "antd";
+import "./style.scss";
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 
-const AppSider: React.FC<{}> = function AppSider(){
+interface NavList {
+  title: string;
+  path: string;
+}
+
+interface propsType {
+  navList: NavList[],
+}
+
+const AppSider: React.FC<propsType> = function AppSider(props) {
+
+  const navDom = props.navList.map((item, index)=>{
+    return (
+      <Menu.Item key={index}>
+        <span className="nav-text">
+          <NavLink to={item.path}>{item.title}</NavLink>
+        </span>
+      </Menu.Item>
+    )
+  })
+
   return (
     <Sider
       breakpoint="lg"
@@ -17,9 +38,9 @@ const AppSider: React.FC<{}> = function AppSider(){
         console.log(collapsed, type);
       }}
     >
-      <div className="logo" />
-      <Menu theme="light" mode="inline" defaultSelectedKeys={['0']}>
-        <Menu.Item key="1">
+      <Menu theme="light" mode="inline" defaultSelectedKeys={["0"]}>
+        {navDom}
+        {/* <Menu.Item key="1">
           <Icon type="user" />
           <span className="nav-text">nav 1</span>
         </Menu.Item>
@@ -38,10 +59,10 @@ const AppSider: React.FC<{}> = function AppSider(){
         <Menu.Item key="5">
           <Icon type="user" />
           <span className="nav-text">nav 5</span>
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
     </Sider>
-  )
-}
+  );
+};
 
 export default AppSider;
