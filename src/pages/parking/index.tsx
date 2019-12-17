@@ -1,7 +1,7 @@
 import React, { Suspense, PropsWithChildren } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Layout } from "antd";
-import { renderRoutes, RouteConfig } from "react-router-config";
+import { renderRoutes } from "react-router-config";
 import Sider from "@layout/sider";
 import Loading from "@pages/common/loading";
 const { Content } = Layout;
