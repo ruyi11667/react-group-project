@@ -22,6 +22,10 @@ const routes: RouteConfig[] = [
   {
     path: '/parking/equipmentManage',
     component: lazy(()=>import('@pages/parking/children/equipmentManage'))
+  },
+  {
+    path: '/parking/newInfo/:type',
+    component: lazy(()=>import('@pages/parking/children/newInfo'))
   }
 ]
 
