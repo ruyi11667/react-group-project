@@ -38,7 +38,7 @@ const Parking: React.FC<PropsWithChildren<any>> = function Parking(props) {
           height: "100%"
         }}
       >
-        <Sider navList={arrList} />
+        <Sider navList={arrList}/>
         <Content
           style={{
             background: "#fff",

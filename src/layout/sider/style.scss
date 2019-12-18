@@ -12,3 +12,36 @@
     height: 100%;
   }
 }
+
+.listItems {
+  width: 100%;
+  padding: 5px;
+  li {
+    width: 100%;
+    height: 40px;
+    background: #eee;
+    margin: 5px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 5px;
+    .listTitle {
+      color: #000;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .listIpt {
+      width: 80%;
+      height: 30px;
+      outline: none;
+      border: none;
+      padding-left: 5px;
+    }
+    .listIcon {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+    }
+  }
+}

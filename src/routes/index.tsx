@@ -2,18 +2,21 @@ import React, { lazy } from 'react'
 import {Redirect} from 'react-router-dom'
 import {RouteConfig} from 'react-router-config'
 import parking from '@routes/children/parking.tsx'
+import home from '@routes/children/home.tsx'
 
 const routes: RouteConfig[] = [
   {
     path: '/',
     exact: true,
-    component: lazy(()=>import('../pages/home'))
+    component: lazy(()=>import('../pages/home')),
+    // routes: home
   },
   //首页
   {
     path: '/home',
-    exact: true,
-    component: lazy(()=>import('../pages/home'))
+    exact: false,
+    component: lazy(()=>import('../pages/home')),
+    routes: home
   },
   //停车场管理
   {

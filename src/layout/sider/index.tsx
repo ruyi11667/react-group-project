@@ -9,9 +9,12 @@ interface NavList {
   title: string;
   path: string;
 }
-
+interface childrenList {
+  num: number
+}
 interface propsType {
-  navList: NavList[],
+  navList: NavList[];
+  children ? : any
 }
 
 const AppSider: React.FC<propsType> = function AppSider(props) {
@@ -37,6 +40,8 @@ const AppSider: React.FC<propsType> = function AppSider(props) {
         console.log(collapsed, type);
       }}
     >
+      {props.children ? props.children : <></>}
+
       <Menu theme="light" mode="inline" defaultSelectedKeys={["0"]}>
         {navDom}
       </Menu>
