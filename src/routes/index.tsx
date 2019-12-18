@@ -1,6 +1,7 @@
-import React, { lazy, Children } from 'react'
+import React, { lazy } from 'react'
 import {Redirect} from 'react-router-dom'
 import {RouteConfig} from 'react-router-config'
+import parking from '@routes/children/parking.tsx'
 
 const routes: RouteConfig[] = [
   {
@@ -18,9 +19,7 @@ const routes: RouteConfig[] = [
   {
     path: '/parking',
     component: lazy(()=>import('../pages/parking')),
-    routes: [
-      
-    ]
+    routes: parking
   },
   //数据统计
   {
