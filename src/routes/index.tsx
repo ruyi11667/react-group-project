@@ -2,6 +2,7 @@ import React, { lazy } from 'react'
 import {Redirect} from 'react-router-dom'
 import {RouteConfig} from 'react-router-config'
 import parking from '@routes/children/parking.tsx'
+import system from '@routes/children/system.tsx'
 
 const routes: RouteConfig[] = [
   {
@@ -29,7 +30,8 @@ const routes: RouteConfig[] = [
   //系统管理
   {
     path: '/system',
-    component: lazy(()=>import('../pages/system'))
+    component: lazy(()=>import('../pages/system')),
+    routes:system
   },
   //错误页面
   {
