@@ -11,12 +11,8 @@ interface NavList {
   path: string;
 }
 interface propsType {
-<<<<<<< HEAD
-  navList: NavList[];
-  children ? : any
-=======
   navList: List<NavList>,
->>>>>>> zy
+  children ? : any
 }
 
 const AppSider: React.FC<propsType> = function AppSider(props) {

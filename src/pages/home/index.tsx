@@ -1,4 +1,5 @@
 import React ,{Suspense, PropsWithChildren, useEffect} from 'react'
+import {List} from 'immutable'
 import { BrowserRouter } from "react-router-dom";
 import { Layout, Icon } from "antd";
 import { renderRoutes } from "react-router-config";
@@ -7,7 +8,7 @@ import Loading from "@pages/common/loading";
 const { Content } = Layout;
 
 const Home: React.FC<PropsWithChildren<any>> = function Home(props){
-  const arrList = [
+  const arrList = List([
     {
       title: '中原福塔停车场',
       path: '/home/parking/1'
@@ -24,7 +25,7 @@ const Home: React.FC<PropsWithChildren<any>> = function Home(props){
       title: '上海浦东停车场',
       path: '/home/parking/4'
     }
-  ]
+  ]);
   const showList = (
     <ul className='listItems'>
       <li className='listItem1'>
