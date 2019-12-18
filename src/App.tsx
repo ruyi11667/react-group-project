@@ -8,7 +8,6 @@ import routes from './routes'
 import Loading from './pages/common/loading'
 const { Content } = Layout;
 
-
 const App: React.FC<{}> = function App(){
   return (
     <BrowserRouter>
