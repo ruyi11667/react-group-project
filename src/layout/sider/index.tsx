@@ -9,9 +9,6 @@ interface NavList {
   title: string;
   path: string;
 }
-interface childrenList {
-  num: number
-}
 interface propsType {
   navList: NavList[];
   children ? : any
