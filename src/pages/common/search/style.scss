@@ -1,0 +1,19 @@
+.SearchBox{
+  border: 1px solid #ccc;
+  padding: 20px;
+  .frameBox{
+    &>div{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0 20px;
+      &>div>input{
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 32px;
+        outline: none;
+      }
+    }
+  }
+}

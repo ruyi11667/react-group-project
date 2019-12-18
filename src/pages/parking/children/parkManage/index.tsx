@@ -4,7 +4,6 @@ import Search from '@pages/common/search'
 const ParkMana: React.FC<{}> = function RarkMana() {
   return (
     <div>
-      <h1>停车场管理</h1>
       <Search type="park"/>
     </div>
   )
