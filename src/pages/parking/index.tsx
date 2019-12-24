@@ -1,14 +1,16 @@
 import React, { Suspense, PropsWithChildren } from "react";
+import { List } from 'immutable'
 import { BrowserRouter } from "react-router-dom";
 import { Layout } from "antd";
 import { renderRoutes } from "react-router-config";
 import Sider from "@layout/sider";
 import Loading from "@pages/common/loading";
+import './style.scss'
 const { Content } = Layout;
 
 const Parking: React.FC<PropsWithChildren<any>> = function Parking(props) {
 
-  const arrList = [
+  const arrList = List([
     {
       title: "停车场管理",
       path: "/parking/parkManage"
@@ -29,7 +31,7 @@ const Parking: React.FC<PropsWithChildren<any>> = function Parking(props) {
       title: "设备管理",
       path: "/parking/equipmentManage"
     }
-  ];
+  ]);
   return (
     <BrowserRouter>
       <Layout
@@ -38,11 +40,11 @@ const Parking: React.FC<PropsWithChildren<any>> = function Parking(props) {
           height: "100%"
         }}
       >
-        <Sider navList={arrList} />
+        <Sider navList={arrList}/>
         <Content
           style={{
             background: "#fff",
-            padding: "24px 0",
+            padding: "24px 20px",
             margin: "0 10px"
           }}
         >

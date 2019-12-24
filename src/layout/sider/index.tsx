@@ -1,4 +1,5 @@
 import React from "react";
+import { List } from 'immutable'
 import { NavLink } from 'react-router-dom'
 import { Layout, Menu } from "antd";
 import "./style.scss";
@@ -9,9 +10,9 @@ interface NavList {
   title: string;
   path: string;
 }
-
 interface propsType {
-  navList: NavList[],
+  navList: List<NavList>,
+  children ? : any
 }
 
 const AppSider: React.FC<propsType> = function AppSider(props) {
@@ -20,7 +21,7 @@ const AppSider: React.FC<propsType> = function AppSider(props) {
     return (
       <Menu.Item key={index}>
         <span className="nav-text">
-          <NavLink to={item.path}>{item.title}</NavLink>
+          <NavLink to={item!.path}>{item!.title}</NavLink>
         </span>
       </Menu.Item>
     )
@@ -37,6 +38,8 @@ const AppSider: React.FC<propsType> = function AppSider(props) {
         console.log(collapsed, type);
       }}
     >
+      {props.children ? props.children : <></>}
+
       <Menu theme="light" mode="inline" defaultSelectedKeys={["0"]}>
         {navDom}
       </Menu>

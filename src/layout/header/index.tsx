@@ -16,11 +16,11 @@ const AppHeader: React.FC<{}> = function AppHeader(){
     (path: string) => {
       history.push(path);
     },
-    [history],)
+    [history])
 
  let headerDOM = headerList.map((item,index) => (
-  <Menu.Item key={index}>
-    <Button type="primary" onClick={()=>itemClickAction(item.path)}>{item.title}</Button>
+  <Menu.Item key={index} onClick={()=>itemClickAction(item.path)}>
+    <Button type="primary" >{item.title}</Button>
   </Menu.Item>
 ))
   return (
