@@ -9,7 +9,7 @@ const AppHeader: React.FC<{}> = function AppHeader(){
     {id: '1', title: '首页', path: '/home'},
     {id: '2', title: '停车厂管理', path: '/parking/parkManage'},
     {id: '3', title: '数据统计', path: '/dataCount'},
-    {id: '4', title: '系统管理', path: '/system'},
+    {id: '4', title: '系统管理', path: '/system/userManager'},
   ]
   const history = useHistory();
   const itemClickAction = useCallback(

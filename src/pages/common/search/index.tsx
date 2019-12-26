@@ -1,4 +1,7 @@
 import React from "react";
+import { Button } from 'antd';
+import './style.scss'
+
 import kindDom from "./kindDom";
 
 const Search: React.FC<{ type: String }> = function Search({ type }) {
@@ -65,7 +68,9 @@ const Search: React.FC<{ type: String }> = function Search({ type }) {
   return (
     <section className="SearchBox">
       <div className="frameBox">{checkDom()}</div>
-      {type}
+      <Button type="primary">查询</Button>
+      <Button type="primary">重置</Button>
+      <Button type="danger">新增</Button>
     </section>
   );
 };

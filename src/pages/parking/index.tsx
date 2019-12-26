@@ -5,6 +5,7 @@ import { Layout } from "antd";
 import { renderRoutes } from "react-router-config";
 import Sider from "@layout/sider";
 import Loading from "@pages/common/loading";
+import './style.scss'
 const { Content } = Layout;
 
 const Parking: React.FC<PropsWithChildren<any>> = function Parking(props) {
@@ -43,7 +44,7 @@ const Parking: React.FC<PropsWithChildren<any>> = function Parking(props) {
         <Content
           style={{
             background: "#fff",
-            padding: "24px 0",
+            padding: "24px 20px",
             margin: "0 10px"
           }}
         >
