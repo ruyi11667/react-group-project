@@ -1,6 +1,13 @@
 import React from "react";
-import { Button } from 'antd';
-import './style.scss'
+import { Button } from "antd";
+import "./style.scss";
+import Park from './children/park'
+import Area from './children/Area'
+import StateSele from './children/state'
+import Carport from './children/Carport'
+import Rule from './children/Rule'
+import Card from './children/card'
+import Equ from './children/Equ'
 
 import kindDom from "./kindDom";
 
@@ -10,54 +17,36 @@ const Search: React.FC<{ type: String }> = function Search({ type }) {
       case "park":
         return (
           <div>
-            {kindDom.parkIdDom}
-            {kindDom.parkNameDom}
-            {kindDom.areaDom}
-            {kindDom.principalDom}
-            {kindDom.stateDom}
+            <Park/>
+            <Area/>
+            <StateSele/>
           </div>
         );
       case "spot":
         return (
           <div>
-            {kindDom.parkIdDom}
-            {kindDom.parkNameDom}
-            {kindDom.carportIDDom}
-            {kindDom.carportNameDom}
-            {kindDom.carportKindDom}
-            {kindDom.stateDom}
+            <Park/>
+            <Carport/>
+            <StateSele/>
           </div>
         );
       case "billing":
         return (
-          <div>
-            {kindDom.ruleIDDom}
-            {kindDom.ruleNameDom}
-            {kindDom.userKindDom}
-            {kindDom.billingModeDom}
-            {kindDom.freeTimeDom}
-          </div>
+          <Rule/>
         );
       case "card":
         return (
           <div>
-            {kindDom.parkIdDom}
-            {kindDom.parkNameDom}
-            {kindDom.cardIDDom}
-            {kindDom.cardNameDom}
-            {kindDom.cardKindDom}
-            {kindDom.stateDom}
+            <Park/>
+            <Card/>
+            <StateSele/>
           </div>
         );
       case "equipment":
         return (
           <div>
-            {kindDom.equIDDom}
-            {kindDom.equNameDom}
-            {kindDom.equIPDom}
-            {kindDom.addManDom}
-            {kindDom.parkDom}
-            {kindDom.stateDom}
+            <Equ/>
+            <StateSele/>
           </div>
         );
       default:
@@ -67,10 +56,14 @@ const Search: React.FC<{ type: String }> = function Search({ type }) {
 
   return (
     <section className="SearchBox">
-      <div className="frameBox">{checkDom()}</div>
-      <Button type="primary">查询</Button>
-      <Button type="primary">重置</Button>
-      <Button type="danger">新增</Button>
+      <div className="frameBox">
+        {checkDom()}
+      </div>
+      <div className="searchBtn">
+        <Button type="primary">查询</Button>
+        <Button type="primary">重置</Button>
+        <Button type="danger">新增</Button>
+      </div>
     </section>
   );
 };
