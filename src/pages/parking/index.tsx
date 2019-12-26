@@ -1,4 +1,4 @@
-import React, { Suspense, PropsWithChildren } from "react";
+import React, { Suspense, PropsWithChildren, useEffect } from "react";
 import { List } from 'immutable'
 import { BrowserRouter } from "react-router-dom";
 import { Layout } from "antd";
@@ -32,6 +32,10 @@ const Parking: React.FC<PropsWithChildren<any>> = function Parking(props) {
       path: "/parking/equipmentManage"
     }
   ]);
+
+  useEffect(() => {
+    console.log('a')
+  })
   return (
     <BrowserRouter>
       <Layout
