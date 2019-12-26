@@ -40,18 +40,9 @@ const Home: React.FC<PropsWithChildren<any>> = function Home(props){
   )
   
   useEffect(() => {
-    console.log(1111);
-    console.log(props);
-    
-    console.log(props.location.pathname);
     if(props.location.pathname === '/home' || props.location.pathname === '/' ) {
       window.location.replace('/home/parking/1');
     }
-    
-    // props.route.push('home/parking/1');
-
-    // 
-    
   },[])
   
   return (
