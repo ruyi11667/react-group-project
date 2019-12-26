@@ -32,7 +32,7 @@ const routes: RouteConfig[] = [
   },
   //系统管理
   {
-    path: '/system',
+    path: '/system/userManager',
     component: lazy(()=>import('../pages/system')),
     routes:system
   },
