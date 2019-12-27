@@ -3,11 +3,14 @@ import address from "./address";
 import { Select } from "antd";
 const { Option } = Select;
 
-const handleChange = () => {};
+const handleChange = (value: string, option: any) => {
+  console.log('a', value, option);
+  
+};
 
 const children = Object.entries(address.province_list).map(([key, value]) => {
   return (
-    <Option key={key} value={key}>
+    <Option key={key} value={key} title="province">
       {value}
     </Option>
   );
@@ -38,7 +41,7 @@ const areaDom = (
       className="province"
       id="province"
     >
-      <Option value="0">请选择省</Option>
+      <Option value="0" title="province">请选择省</Option>
       {children}
     </Select>
     <Select
@@ -48,7 +51,7 @@ const areaDom = (
       className="city"
       id="city"
     >
-      <Option value="0">请选择市</Option>
+      <Option value="0" title="city">请选择市</Option>
       {children}
     </Select>
   </div>
@@ -76,9 +79,9 @@ const stateDom = (
       className="state"
       id="state"
     >
-      <Option value="all">全部</Option>
-      <Option value="open">开启</Option>
-      <Option value="off">关闭</Option>
+      <Option title="state" value="all">全部</Option>
+      <Option title="state" value="open">开启</Option>
+      <Option title="state" value="off">关闭</Option>
     </Select>
   </div>
 );
