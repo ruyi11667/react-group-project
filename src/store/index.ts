@@ -1,11 +1,13 @@
 import React from 'react';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import parkingSearch from './parking/parkingSearch';
+import user from "./user";
 
 import thunk from 'redux-thunk';
 
 const reudcer = combineReducers({
-  parkingSearch
+  parkingSearch,
+  user
 })
 
 

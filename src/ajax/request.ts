@@ -52,7 +52,7 @@ class HtttpRequest{
     // 拦截响应
     instance.interceptors.response.use((response: AxiosResponse)=>{
       const {data: {code, message}} = response;
-      if(code === 0){
+      if(code === '0000'){
         //成功
       }else{
         // 失败

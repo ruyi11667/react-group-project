@@ -1,8 +1,9 @@
 
 import React, { useEffect, useCallback, useState, useMemo } from "react";
 import { Table, Divider, Switch, } from "antd";
-import http from "../../../.././../ajax";
-import API from "../../.././../../ajax/api";
+import {useDispatch} from "react-redux";
+import {requestSysUserList} from "../../../../../store/user";
+
 
 //table标题
 const columns = [
@@ -32,11 +33,13 @@ const columns = [
         title: "状态",
         key: 'status',
         render: (obj: any) => {
-            let { _id, status } = obj;
+            let { _id, status,changeStatus} = obj;
             let defaultChecked = status === '0' ? true : false;
-            return (<div>
-                <Switch onChange={(checked) => { handleStatus(_id, checked) }} checkedChildren="开" unCheckedChildren="关" defaultChecked={defaultChecked} />
-            </div>)
+            return (
+            <div>
+                <Switch onChange={(checked) => { changeStatus(_id, checked)(); }} checkedChildren="开" unCheckedChildren="关" defaultChecked={defaultChecked} />
+            </div>
+            )
         }
     },
     {
@@ -46,8 +49,8 @@ const columns = [
             const {_id} = obj;
             return (
                 <span>
-                     <Divider type="vertical" />
                     <a onClick={()=>handleEdit(_id)}>编辑</a>
+                    <Divider type="vertical" />
                     <a onClick={() => {
                         handleDelete(_id);
                     }}>删除</a>
@@ -58,15 +61,12 @@ const columns = [
     }
 ]
 
-
 const SysUser: React.FC<{}> = function SysUser() {
 
-
+    const dispath = useDispatch();
     //数据项
     const [data, setData] = useState();
-
     const [selectedRowKeys, setKey] = useState();
-
     const onSelectChange = useCallback(
         (selectedRowKeys) => {
             console.log(selectedRowKeys);
@@ -74,49 +74,32 @@ const SysUser: React.FC<{}> = function SysUser() {
         },
         [selectedRowKeys, setKey],
     )
-
     const rowSelection: any = useMemo(() => ({ selectedRowKeys, onChange: onSelectChange }), [selectedRowKeys]);
 
     //请求列表
     const requestList = useCallback(
         async () => {
-            let result: any = await http.get(API.SYS_USER_LIST);
-            if (result.data.code === '0000') {
-                let list = result.data.data;
-                list = list.map((item: any, index: any) => {
-                    item.roleName = item.role.name;
-                    item.index = index + 1;
-                    return item
-                });
-                setData(list);
-
-            }
+            let list = await dispath(requestSysUserList());
+            console.log(list);
+            setData(list);
         },
-        [],
+        [dispath,setData],
     )
+
 
     //组件创建
     useEffect(() => {
         requestList();
     }, [requestList]);
 
-
-
-
     return (
         <div>
             <Table rowKey={(record:any) => record._id} rowSelection={rowSelection} dataSource={data} columns={columns} />
         </div>
     )
-
-
 }
 
 
-//改变状态
-function handleStatus(id: string, checked: boolean) {
-    console.log(id, checked);
-}
 
 //删除
 function handleDelete(id: string) {
