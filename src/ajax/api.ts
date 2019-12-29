@@ -14,6 +14,12 @@ enum API{
 
     //分页查询管理员列表
     SYS_USER_LIST= '/manager/api/user/listUser',
-    SYS_USER_UPDATE = '/manager/api/user/updateUser'
+    //修改管理员信息
+    SYS_USER_UPDATE = '/manager/api/user/updateUser',
+    //删除用户
+    SYS_USER_DELETE = "/manager/api/user/deleteUser",
+
+    ALL_ROLE = "/manager/api/role/allRole"
+
   }
   export default API;

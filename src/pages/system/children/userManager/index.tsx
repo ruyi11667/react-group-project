@@ -50,12 +50,7 @@ const UserManager: React.FC<{}> = function UserManager() {
 
   return (
     <>
-      <Layout
-        style={{
-          background: "#F3F3F3",
-          height: "100%"
-        }}
-      >
+     
 
         <Content
           style={{
@@ -65,10 +60,10 @@ const UserManager: React.FC<{}> = function UserManager() {
           }}
         >
           <Tab  changeIndex={handleChangeIndex} selectIndex={selectIndex} />
-          <Search type="card" />
+          {/* <Search type="card" /> */}
           <Com></Com>
         </Content>
-      </Layout>
+     
     </>
   );
 

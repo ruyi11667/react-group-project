@@ -6,7 +6,12 @@ const routes: RouteConfig[] = [
   
   {
     path: '/system/userManager',
-    component: lazy(()=>import('@pages/system/children/userManager'))
+    component: lazy(()=>import('@pages/system/children/userManager')),
+    exact:true
+  },
+  {
+    path:'/system/userManager/edit/:id',
+    component: lazy(()=>import('@pages/system/children/userManager/sysUser/edit'))
   },
   {
     path: '/system/roleManager',

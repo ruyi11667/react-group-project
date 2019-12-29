@@ -1,5 +1,6 @@
 import React from 'react';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import {combineReducers} from "redux-immutable";
 import parkingSearch from './parking/parkingSearch';
 import user from "./user";
 
