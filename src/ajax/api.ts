@@ -13,6 +13,14 @@ enum API{
     FINANCE_STAT_API= '/manager/api/finance/stat',
 
     //分页查询管理员列表
-    SYS_USER_LIST= '/manager/api/user/listUser'
+    SYS_USER_LIST= '/manager/api/user/listUser',
+    //修改管理员信息
+    SYS_USER_UPDATE = '/manager/api/user/updateUser',
+    //删除用户
+    SYS_USER_DELETE = "/manager/api/user/deleteUser",
+    SYS_USER_ADD = "/manager/api/user/addUser",
+
+    ALL_ROLE = "/manager/api/role/allRole"
+
   }
   export default API;

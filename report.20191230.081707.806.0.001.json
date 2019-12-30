@@ -4,10 +4,10 @@
     "reportVersion": 1,
     "event": "Allocation failed - JavaScript heap out of memory",
     "trigger": "FatalError",
-    "filename": "report.20191226.213323.3916.0.001.json",
-    "dumpEventTime": "2019-12-26T21:33:23Z",
-    "dumpEventTimeStamp": "1577367203272",
-    "processId": 3916,
+    "filename": "report.20191230.081707.806.0.001.json",
+    "dumpEventTime": "2019-12-30T08:17:07Z",
+    "dumpEventTimeStamp": "1577665027172",
+    "processId": 806,
     "cwd": "/Users/ruyisun/Documents/study/learn/part3/project/react-group/react-group-project",
     "commandLine": [
       "node",
@@ -49,73 +49,73 @@
       {
         "model": "Intel(R) Core(TM) i5-8257U CPU @ 1.40GHz",
         "speed": 1400,
-        "user": 10668700,
+        "user": 251270,
         "nice": 0,
-        "sys": 5904060,
-        "idle": 78704850,
+        "sys": 108520,
+        "idle": 607410,
         "irq": 0
       },
       {
         "model": "Intel(R) Core(TM) i5-8257U CPU @ 1.40GHz",
         "speed": 1400,
-        "user": 498260,
+        "user": 23020,
         "nice": 0,
-        "sys": 736540,
-        "idle": 94042200,
+        "sys": 17730,
+        "idle": 925960,
         "irq": 0
       },
       {
         "model": "Intel(R) Core(TM) i5-8257U CPU @ 1.40GHz",
         "speed": 1400,
-        "user": 8942150,
+        "user": 212190,
         "nice": 0,
-        "sys": 4253760,
-        "idle": 82081100,
+        "sys": 82960,
+        "idle": 671550,
         "irq": 0
       },
       {
         "model": "Intel(R) Core(TM) i5-8257U CPU @ 1.40GHz",
         "speed": 1400,
-        "user": 435560,
+        "user": 21340,
         "nice": 0,
-        "sys": 518970,
-        "idle": 94322470,
+        "sys": 14580,
+        "idle": 930780,
         "irq": 0
       },
       {
         "model": "Intel(R) Core(TM) i5-8257U CPU @ 1.40GHz",
         "speed": 1400,
-        "user": 6661280,
+        "user": 193030,
         "nice": 0,
-        "sys": 3238380,
-        "idle": 85377350,
+        "sys": 70810,
+        "idle": 702860,
         "irq": 0
       },
       {
         "model": "Intel(R) Core(TM) i5-8257U CPU @ 1.40GHz",
         "speed": 1400,
-        "user": 405770,
+        "user": 21350,
         "nice": 0,
-        "sys": 414270,
-        "idle": 94456960,
+        "sys": 12680,
+        "idle": 932670,
         "irq": 0
       },
       {
         "model": "Intel(R) Core(TM) i5-8257U CPU @ 1.40GHz",
         "speed": 1400,
-        "user": 4984660,
+        "user": 182540,
         "nice": 0,
-        "sys": 2412330,
-        "idle": 87880010,
+        "sys": 56170,
+        "idle": 728000,
         "irq": 0
       },
       {
         "model": "Intel(R) Core(TM) i5-8257U CPU @ 1.40GHz",
         "speed": 1400,
-        "user": 391580,
+        "user": 22440,
         "nice": 0,
-        "sys": 347060,
-        "idle": 94538350,
+        "sys": 11690,
+        "idle": 932570,
         "irq": 0
       }
     ],
@@ -150,7 +150,7 @@
         "name": "en5",
         "internal": false,
         "mac": "00:e0:4c:70:d5:57",
-        "address": "fe80::10c3:b7c3:fab6:d4fb",
+        "address": "fe80::879:7a95:2e3b:6318",
         "netmask": "ffff:ffff:ffff:ffff::",
         "family": "IPv6",
         "scopeid": 7
@@ -176,7 +176,7 @@
         "name": "en0",
         "internal": false,
         "mac": "a4:83:e7:91:e5:7c",
-        "address": "fe80::1c50:bcee:3dd9:c1df",
+        "address": "fe80::c91:8a0d:a469:9457",
         "netmask": "ffff:ffff:ffff:ffff::",
         "family": "IPv6",
         "scopeid": 10
@@ -185,18 +185,9 @@
         "name": "en0",
         "internal": false,
         "mac": "a4:83:e7:91:e5:7c",
-        "address": "169.254.148.184",
+        "address": "169.254.39.214",
         "netmask": "255.255.0.0",
         "family": "IPv4"
-      },
-      {
-        "name": "utun0",
-        "internal": false,
-        "mac": "00:00:00:00:00:00",
-        "address": "fe80::29e0:68f6:1bae:a4a1",
-        "netmask": "ffff:ffff:ffff:ffff::",
-        "family": "IPv6",
-        "scopeid": 17
       },
       {
         "name": "bridge100",
@@ -214,6 +205,15 @@
         "netmask": "ffff:ffff:ffff:ffff::",
         "family": "IPv6",
         "scopeid": 16
+      },
+      {
+        "name": "utun0",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::d9e3:de65:32c4:ea3d",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 17
       }
     ],
     "host": "ruyideMacBook-Pro.local"
@@ -279,10 +279,10 @@
     }
   ],
   "javascriptHeap": {
-    "totalMemory": 2167898112,
-    "totalCommittedMemory": 2158493848,
-    "usedMemory": 1935122688,
-    "availableMemory": 170468352,
+    "totalMemory": 2143551488,
+    "totalCommittedMemory": 2142174504,
+    "usedMemory": 1965459656,
+    "availableMemory": 227556216,
     "memoryLimit": 2197815296,
     "heapSpaces": {
       "read_only_space": {
@@ -293,38 +293,38 @@
         "available": 229576
       },
       "new_space": {
-        "memorySize": 33554432,
-        "committedMemory": 25435176,
-        "capacity": 16759808,
-        "used": 4104584,
-        "available": 12655224
+        "memorySize": 2097152,
+        "committedMemory": 1237952,
+        "capacity": 1047488,
+        "used": 220880,
+        "available": 826608
       },
       "old_space": {
-        "memorySize": 2034348032,
-        "committedMemory": 2033662200,
-        "capacity": 1944054104,
-        "used": 1833147544,
-        "available": 110906560
+        "memorySize": 2051911680,
+        "committedMemory": 2051788528,
+        "capacity": 2048376328,
+        "used": 1877356488,
+        "available": 171019840
       },
       "code_space": {
-        "memorySize": 2785280,
-        "committedMemory": 2471456,
-        "capacity": 2140480,
-        "used": 2140480,
-        "available": 0
+        "memorySize": 1736704,
+        "committedMemory": 1572160,
+        "capacity": 1650688,
+        "used": 1481792,
+        "available": 168896
       },
       "map_space": {
-        "memorySize": 4198400,
-        "committedMemory": 4142624,
-        "capacity": 3192800,
-        "used": 3192800,
+        "memorySize": 3674112,
+        "committedMemory": 3673600,
+        "capacity": 2722800,
+        "used": 2722800,
         "available": 0
       },
       "large_object_space": {
-        "memorySize": 92127232,
-        "committedMemory": 92127232,
-        "capacity": 91954328,
-        "used": 91954328,
+        "memorySize": 83247104,
+        "committedMemory": 83247104,
+        "capacity": 83094744,
+        "used": 83094744,
         "available": 0
       },
       "code_large_object_space": {
@@ -337,20 +337,20 @@
       "new_large_object_space": {
         "memorySize": 0,
         "committedMemory": 0,
-        "capacity": 16759808,
+        "capacity": 1047488,
         "used": 0,
-        "available": 16759808
+        "available": 1047488
       }
     }
   },
   "resourceUsage": {
-    "userCpuSeconds": 142.342,
-    "kernelCpuSeconds": 30.4676,
-    "cpuConsumptionPercent": 2.43429,
-    "maxRss": 2740331741184,
+    "userCpuSeconds": 133.411,
+    "kernelCpuSeconds": 28.4968,
+    "cpuConsumptionPercent": 177.921,
+    "maxRss": 2674070126592,
     "pageFaults": {
-      "IORequired": 254,
-      "IONotRequired": 1776213
+      "IORequired": 86,
+      "IONotRequired": 1593826
     },
     "fsActivity": {
       "reads": 0,
@@ -368,8 +368,9 @@
     "npm_config_only": "",
     "npm_config_commit_hooks": "true",
     "npm_config_browser": "",
-    "npm_package_gitHead": "fe755a239198d18ecebcf5479b76051146fe6fa5",
+    "npm_package_gitHead": "76f5c943a6c894b33a0943dc7f225adb740f54ef",
     "npm_package_dependencies_semver": "6.3.0",
+    "npm_package_dependencies_redux": "^4.0.4",
     "npm_package_dependencies_camelcase": "^5.3.1",
     "npm_package_dependencies__typescript_eslint_eslint_plugin": "^2.8.0",
     "npm_config_also": "",
@@ -381,10 +382,13 @@
     "NODE": "/usr/local/bin/node",
     "npm_config_usage": "",
     "npm_config_audit": "true",
+    "npm_package_devDependencies__types_redux_immutable": "^4.0.1",
     "npm_package_jest_testMatch_0": "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
     "INIT_CWD": "/Users/ruyisun/Documents/study/learn/part3/project/react-group/react-group-project",
+    "npm_package_devDependencies__types_react_redux": "^7.1.5",
     "npm_package_jest_testEnvironment": "jest-environment-jsdom-fourteen",
     "npm_package_jest_testMatch_1": "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}",
+    "npm_package_dependencies_axios": "^0.19.0",
     "npm_config_globalignorefile": "/usr/local/etc/npmignore",
     "npm_package_dependencies_jest_resolve": "24.9.0",
     "npm_package_dependencies_eslint": "^6.6.0",
@@ -399,7 +403,7 @@
     "TMPDIR": "/var/folders/9b/z7ssfyhd6q5b_0xd7qymcm900000gn/T/",
     "npm_config_timing": "",
     "npm_config_init_license": "ISC",
-    "Apple_PubSub_Socket_Render": "/private/tmp/com.apple.launchd.9BywactfAq/Render",
+    "Apple_PubSub_Socket_Render": "/private/tmp/com.apple.launchd.PImHxXQoWe/Render",
     "npm_config_if_present": "",
     "npm_package_jest_moduleNameMapper______module___css_sass_scss__": "identity-obj-proxy",
     "npm_package_dependencies_terser_webpack_plugin": "2.2.1",
@@ -415,7 +419,7 @@
     "npm_config_cert": "",
     "npm_package_dependencies_pnp_webpack_plugin": "1.5.0",
     "npm_package_dependencies_jest_watch_typeahead": "0.4.2",
-    "TERM_SESSION_ID": "9A207E93-B0F0-4F0E-BA50-FE3885CB497C",
+    "TERM_SESSION_ID": "9559E1DC-6025-498D-899A-A43B1E9E616F",
     "npm_config_registry": "https://registry.npmjs.org/",
     "npm_config_noproxy": "",
     "npm_config_fetch_retries": "2",
@@ -443,7 +447,7 @@
     "npm_package_dependencies_case_sensitive_paths_webpack_plugin": "2.2.0",
     "npm_package_eslintConfig_extends": "react-app",
     "npm_package_dependencies_url_loader": "2.3.0",
-    "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.s7KZZ431kn/Listeners",
+    "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.Qissuh3vXY/Listeners",
     "npm_package_browserslist_development_2": "last 1 safari version",
     "npm_package_dependencies_file_loader": "4.3.0",
     "__CF_USER_TEXT_ENCODING": "0x1F5:0x19:0x34",
@@ -454,6 +458,7 @@
     "npm_package_dependencies_babel_jest": "^24.9.0",
     "npm_config_update_notifier": "true",
     "npm_config_cafile": "",
+    "npm_package_dependencies_react_redux": "^7.1.3",
     "npm_package_devDependencies_babel_plugin_import": "^1.13.0",
     "npm_package_jest_transform_______js_jsx_ts_tsx__": "<rootDir>/node_modules/babel-jest",
     "npm_package_dependencies_postcss_safe_parser": "4.0.1",
@@ -467,7 +472,7 @@
     "npm_package_dependencies_css_loader": "3.2.0",
     "npm_config_json": "",
     "npm_config_access": "",
-    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"start\"],\"original\":[\"run\",\"start\"]}",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"start\"],\"original\":[\"start\"]}",
     "npm_package_dependencies_resolve_url_loader": "3.1.1",
     "PATH": "/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/ruyisun/Documents/study/learn/part3/project/react-group/react-group-project/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mongodb/bin",
     "npm_config_allow_same_version": "",
@@ -482,6 +487,7 @@
     "npm_config_init_module": "/Users/ruyisun/.npm-init.js",
     "npm_package_browserslist_production_1": "not dead",
     "npm_package_dependencies_typescript": "^3.7.3",
+    "npm_package_dependencies_redux_thunk": "^2.3.0",
     "npm_package_dependencies_react_app_polyfill": "^1.0.5",
     "npm_package_dependencies_babel_plugin_named_asset_import": "^0.3.5",
     "npm_package_dependencies__types_jest": "^24.0.23",
@@ -523,6 +529,7 @@
     "npm_config_bin_links": "true",
     "npm_package_jest_watchPlugins_0": "jest-watch-typeahead/filename",
     "npm_package_jest_transformIgnorePatterns_0": "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+    "npm_package_dependencies_redux_immutable": "^4.0.0",
     "npm_package_dependencies_postcss_normalize": "8.0.1",
     "npm_package_dependencies_eslint_plugin_react": "7.16.0",
     "npm_config_searchopts": "",
