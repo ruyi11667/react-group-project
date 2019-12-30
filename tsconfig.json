@@ -6,7 +6,9 @@
       "@pages/*": ["./src/pages/*"],
       "@layout/*": ["./src/layout/*"],
       "@routes/*": ["./src/routes/*"],
-      "@style/*": ["./src/style/*"]
+      "@style/*": ["./src/style/*"],
+      "@ajax/*": ["./src/ajax/*"],
+      "@store/*": ["./src/store/*"]
     },
     "target": "es5",
     "lib": [

@@ -15,7 +15,7 @@ const SysUser: React.FC<{}> = function SysUser() {
       const requestList  = useCallback(
           async () => {
             let result:any =   await http.get(API.SYS_USER_LIST);
-            if(result.data.code=='0000'){
+            if(result.data.code === '0000'){
                 let list =  result.data.data;
             }
           },
