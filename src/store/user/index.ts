@@ -70,11 +70,16 @@ export const changeStatus = (id: string, checked: boolean) => async (dispath: Di
     return Promise.resolve(result);
 }
 export const deleteSysUser = (id: string) => async (dispatch: Dispatch) => {
-    // let result:any =await ajax.get(API.SYS_USER_DELETE);
-    let action = setSysUserData(SetSysUserType.delete, id);
-    dispatch(action);
-    // return Promise.resolve(result);
+    let result:any =await ajax.get(API.SYS_USER_DELETE,{
+        params:{
+            id
+        }
+    });
+    let action = setSysUserData(SetSysUserType.delete);
     console.log(id);
+    dispatch(action);
+    return Promise.resolve(result);
+    
 }
 
 /**
@@ -107,6 +112,16 @@ export const updateSysUser=(id:string,update:{[paramsName:string]:any})=> async 
     dispatch(action);
     return Promise.resolve(result);
 
+}
+
+export const addSysUser=(user:any)=>async (dispatch:Dispatch)=>{
+    console.log(user);
+    let result  = await ajax.get(API.SYS_USER_ADD,{
+        params:{
+            ...user
+        }
+    });
+    return Promise.resolve(result);
 }
 
 
@@ -142,7 +157,7 @@ export default function userReducer(state: any = immutableState, action: Action)
         case SetSysUserType.delete: {
             let list = state.get('SysUserList');
 
-            console.log(list.toJS());
+           
             list = list.map((item: any) => item._id !== action.value);
 
             return state.set('SysUserList', list);

@@ -5,7 +5,8 @@ import { Input, Button, Select,message } from "antd";
 import "./style.scss";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllRole,updateSysUser } from "../../../../../store/user";
+import { getAllRole,updateSysUser, addSysUser } from "../../../../../store/user";
+import Password from "antd/lib/input/Password";
 
 const Content = Layout.Content;
 const { Option } = Select;
@@ -61,8 +62,14 @@ const SysUserEdit: React.FC<{}> = function SysUserEdit() {
                } catch (error) {
                    message.error(error.message,0.5);
                }
-                
-                
+            }else{
+                try {
+                    await dispatch(addSysUser({nickname,username,password,role}));
+                    message.success('添加成功',0.5);
+                    history.goBack();
+                } catch (error) {
+                    message.error(error.message,0.5);
+                }
             }
         },
         [nicknameRef, usernameRef, passwordRef, roleRef,role],

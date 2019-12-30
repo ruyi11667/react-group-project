@@ -18,6 +18,7 @@ enum API{
     SYS_USER_UPDATE = '/manager/api/user/updateUser',
     //删除用户
     SYS_USER_DELETE = "/manager/api/user/deleteUser",
+    SYS_USER_ADD = "/manager/api/user/addUser",
 
     ALL_ROLE = "/manager/api/role/allRole"
 

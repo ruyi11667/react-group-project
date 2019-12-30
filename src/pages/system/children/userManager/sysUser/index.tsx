@@ -1,9 +1,9 @@
 
 import React, { useEffect, useCallback, useState, useMemo } from "react";
-import { Table, Divider, Switch, Button, Input, Row, Col, Select ,Pagination} from "antd";
+import { Table, Divider, Switch, Button, Input, Row, Col, Select ,Pagination, message} from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { requestSysUserList, changeStatus, deleteSysUser } from "../../../../../store/user";
+import { useHistory, useLocation } from "react-router-dom";
+import { requestSysUserList, changeStatus, deleteSysUser,addSysUser } from "../../../../../store/user";
 import { getAllRole } from "../../../../../store/user";
 
 const { Option } = Select;
@@ -39,6 +39,7 @@ const SysUser: React.FC<{}> = function SysUser() {
 
 
     const history = useHistory();
+    const location = useLocation();
 
     const dispatch = useDispatch();
     const roleList = useSelector(state => (state as any).getIn(['user', 'roleList']));
@@ -132,8 +133,15 @@ const SysUser: React.FC<{}> = function SysUser() {
                             history.push('/system/userManager/edit/' + _id);
                         }}>编辑</a>
                         <Divider type="vertical" />
-                        <a onClick={() => {
-                            dispatch(deleteSysUser(_id))
+                        <a onClick={ async () => {
+                            try {
+                                await dispatch(deleteSysUser(_id));
+                                message.success("删除成功",0.5);
+                                requestList();
+                            
+                            } catch (error) {
+                                message.success("删除失败",0.5);
+                            }
                         }}>删除</a>
 
                     </span>
@@ -211,7 +219,7 @@ const SysUser: React.FC<{}> = function SysUser() {
                         <Button type="primary">重置</Button>
                     </Col>
                     <Col span={2}>
-                        <Button type="danger">新增</Button>
+                        <Button type="danger" onClick={()=>{history.push('/system/userManager/edit/new')}}>新增</Button>
                     </Col>
                 </Row>
             </section>
