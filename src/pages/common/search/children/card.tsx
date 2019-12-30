@@ -1,23 +1,29 @@
 import React, { PropsWithChildren } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Select } from "antd";
 const { Option } = Select;
 
 
 const Card: React.FC<PropsWithChildren<any>> = function Card(props) {
 
+  const cardID = useSelector(state => (state as any).getIn(['parkingSearch', 'cardID']));
+  const cardName = useSelector(state => (state as any).getIn(['parkingSearch', 'cardName']));
+  const cardKind = useSelector(state => (state as any).getIn(['parkingSearch', 'cardKind']));
+  const dispatch = useDispatch();
+
   // 获得选择器的值
   const handleChange = (value: string) => {
-    props.pushCardKind(value)
+    dispatch({type: 'pushCardKind', cardKind: value})
   };
   // 获取输入的值
   const changeAct = (ev: React.ChangeEvent<HTMLInputElement>) => {
     switch (ev.target.className) {
       case 'cardID':
+        dispatch({type: 'pushCardID', cardID: ev.target.value})
         props.pushCardID(ev.target.value)
         break;
       case 'cardName':
-        props.pushCardName(ev.target.value)
+        dispatch({type: 'pushCardName', cardName: ev.target.value})
         break;
       default:
         break;
@@ -53,35 +59,5 @@ const Card: React.FC<PropsWithChildren<any>> = function Card(props) {
   );
 };
 
-const mapStateToProps = (state: {
-  parkingSearch: { cardID: any; cardName: any; cardKind: any };
-}) => {
-  return {
-    cardID: state.parkingSearch.cardID, // 车位卡编号
-    cardName: state.parkingSearch.cardName, // 车位卡名称
-    cardKind: state.parkingSearch.cardKind
-  };
-};
 
-const mapDispatchToProps = (dispatch: any) => ({
-  pushCardID (str: String) {
-    dispatch({
-      type: 'pushCardID',
-      cardID: str
-    })
-  },
-  pushCardName (str: String) {
-    dispatch({
-      type: 'pushCardName',
-      cardName: str
-    })
-  },
-  pushCardKind (str: String) {
-    dispatch({
-      type: 'pushCardKind',
-      cardKind: str
-    })
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default Card;

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import { Button } from "antd";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./style.scss";
 import Park from "./children/park";
 import Area from "./children/Area";
@@ -11,6 +11,33 @@ import Card from "./children/card";
 import Equ from "./children/Equ";
 
 const Search: React.FC<PropsWithChildren<any>> = function Search(props) {
+
+  const parkId = useSelector(state => (state as any).getIn(['parkingSearch', 'parkId']));
+  const parkName = useSelector(state => (state as any).getIn(['parkingSearch', 'parkName']));
+  const province = useSelector(state => (state as any).getIn(['parkingSearch', 'province']));
+  const city = useSelector(state => (state as any).getIn(['parkingSearch', 'city']));
+  const county = useSelector(state => (state as any).getIn(['parkingSearch', 'county']));
+  const principal = useSelector(state => (state as any).getIn(['parkingSearch', 'principal']));
+  const state = useSelector(state => (state as any).getIn(['parkingSearch', 'state']));
+  const carportID = useSelector(state => (state as any).getIn(['parkingSearch', 'parkId']));
+  const carportName = useSelector(state => (state as any).getIn(['parkingSearch', 'carportName']));
+  const carportKind = useSelector(state => (state as any).getIn(['parkingSearch', 'carportKind']));
+  const ruleID = useSelector(state => (state as any).getIn(['parkingSearch', 'ruleID']));
+  const ruleName = useSelector(state => (state as any).getIn(['parkingSearch', 'ruleName']));
+  const userKind = useSelector(state => (state as any).getIn(['parkingSearch', 'userKind']));
+  const billingMode = useSelector(state => (state as any).getIn(['parkingSearch', 'billingMode']));
+  const freeTime = useSelector(state => (state as any).getIn(['parkingSearch', 'freeTime']));
+  const cardID = useSelector(state => (state as any).getIn(['parkingSearch', 'cardID']));
+  const cardName = useSelector(state => (state as any).getIn(['parkingSearch', 'cardName']));
+  const cardKind = useSelector(state => (state as any).getIn(['parkingSearch', 'cardKind']));
+  const equID = useSelector(state => (state as any).getIn(['parkingSearch', 'equID']));
+  const equName = useSelector(state => (state as any).getIn(['parkingSearch', 'equName']));
+  const equIP = useSelector(state => (state as any).getIn(['parkingSearch', 'equIP']));
+  const addMan = useSelector(state => (state as any).getIn(['parkingSearch', 'addMan']));
+  const park = useSelector(state => (state as any).getIn(['parkingSearch', 'park']));
+  
+  const dispatch = useDispatch();
+
   const checkDom = () => {
     switch (props.type) {
       case "park":
@@ -54,24 +81,30 @@ const Search: React.FC<PropsWithChildren<any>> = function Search(props) {
   const findBtnAct = (ev: React.MouseEvent<HTMLButtonElement>) => {
     switch (props.type) {
       case "park":
-        console.log(props.parkId, props.parkName, props.province, props.city, props.county, props.principal, props.state)
+        console.log(parkId, parkName, province, city, county, principal, state)
         break ;
       case "spot":
-        console.log(props.parkId, props.parkName, props.carportID, props.carportName, props.carportKind, props.state)
+        console.log(parkId, parkName, carportID, carportName, carportKind, state)
         break ;
       case "billing":
-        console.log(props.ruleID, props.ruleName, props.userKind, props.billingMode, props.freeTime)
+        console.log(ruleID, ruleName, userKind, billingMode, freeTime)
         break ;
       case "card":
-        console.log(props.parkId, props.parkName, props.cardID, props.cardName, props.cardKind, props.state)
+        console.log(parkId, parkName, cardID, cardName, cardKind, state)
         break ;
       case "equipment":
-        console.log(props.equID, props.equName, props.equIP, props.addMan, props.park, props.state)
+        console.log(equID, equName, equIP, addMan, park, state)
         break ;
       default:
         break ;
     }
   };
+
+  // 新增按钮
+  const newBtnClc = async (ev: React.MouseEvent<HTMLButtonElement>) => {
+    await dispatch({type: 'pushParkId', parkId: '12345'})
+    console.log(parkId);
+  }
 
   return (
     <section className="SearchBox">
@@ -81,66 +114,11 @@ const Search: React.FC<PropsWithChildren<any>> = function Search(props) {
           查询
         </Button>
         <Button type="primary">重置</Button>
-        <Button type="danger">新增</Button>
+        <Button type="danger" onClick={newBtnClc}>新增{parkId}</Button>
       </div>
     </section>
   );
 };
 
-const mapStateToProps = (state: {
-  parkingSearch: {
-    parkId: any;
-    parkName: any;
-    province: any;
-    city: any;
-    county: any;
-    principal: any;
-    state: any;
-    carportID: any;
-    carportName: any;
-    carportKind: any;
-    ruleID: any;
-    ruleName: any;
-    userKind: any;
-    billingMode: any;
-    freeTime: any;
-    cardID: any;
-    cardName: any;
-    cardKind: any;
-    equID: any;
-    equName: any;
-    equIP: any;
-    addMan: any;
-    park: any;
-  };
-}) => {
-  return {
-    parkId: state.parkingSearch.parkId, // 停车场ID
-    parkName: state.parkingSearch.parkName, // 停车场名称
-    province: state.parkingSearch.province, // 省
-    city: state.parkingSearch.city, // 市
-    county: state.parkingSearch.county, // 区
-    principal: state.parkingSearch.principal, // 负责人
-    state: state.parkingSearch.state, // 状态（全部，开启，关闭）all/open/off
-    carportID: state.parkingSearch.carportID, // 车库编号
-    carportName: state.parkingSearch.carportName, // 车库名称
-    carportKind: state.parkingSearch.carportKind, // 车库类型（全部，平面车库，立体车库）all/planeCarport/stereCarport
-    ruleID: state.parkingSearch.ruleID, // 计费规则编号
-    ruleName: state.parkingSearch.ruleName, // 计费规则名称
-    userKind: state.parkingSearch.userKind, // 用户类型（全部/临时车主/包天卡车主/时长卡车主/次卡车主）all/temporaryUser/dayUser/timeUser/cardUser
-    billingMode: state.parkingSearch.billingMode, // 计费方式（全部/时长计费/时段计费/按次计费）all/timeLong/timeSection/number
-    freeTime: state.parkingSearch.freeTime, // 免费时长
-    cardID: state.parkingSearch.cardID, // 车位卡编号
-    cardName: state.parkingSearch.cardName, // 车位卡名称
-    cardKind: state.parkingSearch.cardKind, // 车位卡类型（全部/包天卡/时长卡/次卡）all/day/time/number
-    equID: state.parkingSearch.equID, // 设备编号
-    equName: state.parkingSearch.equName, // 设备名称
-    equIP: state.parkingSearch.equIP, // 设备序列号
-    addMan: state.parkingSearch.addMan, // 添加人
-    park: state.parkingSearch.park // 停车场
-  };
-};
 
-const mapDispatchToProps = (dispatch: any) => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default Search;

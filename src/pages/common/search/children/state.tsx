@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Select } from "antd";
 const { Option } = Select;
 
@@ -8,6 +8,10 @@ const handleChange = (value: string, option: any) => {
 };
 
 const StateSele: React.FC<{}> = function StateSele() {
+
+  const state = useSelector(state => (state as any).getIn(['parkingSearch', 'state']));
+  const dispatch = useDispatch();
+
   return (
     <div style={{flex: 1}}>
       <div className="stateBox">
@@ -34,12 +38,6 @@ const StateSele: React.FC<{}> = function StateSele() {
   );
 };
 
-const mapStateToProps = (state: { parkingSearch: { state: any } }) => {
-  return {
-    state: state.parkingSearch.state
-  };
-};
 
-const mapDispatchToProps = (state: any) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(StateSele);
+export default StateSele;

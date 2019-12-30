@@ -1,23 +1,28 @@
 import React, { PropsWithChildren } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Select } from "antd";
 const { Option } = Select;
 
 
 const Carport: React.FC<PropsWithChildren<any>> = function Carport(props) {
 
+  const carportID = useSelector(state => (state as any).getIn(['parkingSearch', 'carportID']));
+  const carportName = useSelector(state => (state as any).getIn(['parkingSearch', 'carportName']));
+  const carportKind = useSelector(state => (state as any).getIn(['parkingSearch', 'carportKind']));
+  const dispatch = useDispatch();
+
   // 获得选择器的值
   const handleChange = (value: string) => {
-    props.pushCarportKind(value)
+        dispatch({type: 'pushCarportKind', carportKind: value})
   };
   // 获取输入的值
   const changeAct = (ev: React.ChangeEvent<HTMLInputElement>) => {
     switch (ev.target.className) {
       case 'carportID':
-        props.pushCarportID(ev.target.value)
+        dispatch({type: 'pushCarportID', carportID: ev.target.value})
         break;
       case 'carportName':
-        props.pushCarportName(ev.target.value)
+        dispatch({type: 'pushCarportName', carportName: ev.target.value})
         break;
       default:
         break;
@@ -65,35 +70,5 @@ const Carport: React.FC<PropsWithChildren<any>> = function Carport(props) {
 };
 
 
-const mapStateToProps = (state: {
-  parkingSearch: { carportID: any; carportName: any; carportKind: any };
-}) => {
-  return {
-    carportID: state.parkingSearch.carportID,
-    carportName: state.parkingSearch.carportName,
-    carportKind: state.parkingSearch.carportKind
-  };
-};
 
-const mapDispatchToProps = (dispatch: any) => ({
-  pushCarportID(str: String){
-    dispatch({
-      type: 'pushCarportID',
-      carportID: str
-    })
-  },
-  pushCarportName(str: String){
-    dispatch({
-      type: 'pushCarportName',
-      carportName: str
-    })
-  },
-  pushCarportKind(str: String){
-    dispatch({
-      type: 'pushCarportKind',
-      carportKind: str
-    })
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Carport);
+export default Carport;

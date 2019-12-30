@@ -1,7 +1,8 @@
-import React from "react";
+import immutable from 'immutable';
+
 
 const initialState = {
-  parkId: "", // 停车场ID
+  parkId: "123", // 停车场ID
   parkName: "", // 停车场名称
   province: "", // 省
   city: "", // 市
@@ -26,64 +27,43 @@ const initialState = {
   park: "" // 停车场（全部/中原福塔停车场/国际陆港停车场）all/centralPark/internationPark
 };
 
+const immutableState = immutable.fromJS(initialState)
 
-export default (state = initialState, action: any) => {
+export default (state: any = immutableState, action: any) => {
   switch (action.type) {
-    case "pushProvince" :
-      return {
-        ...state,
-        province: action.province
-      };
-    case "pushCity" :
-      return {
-        ...state,
-        city: action.city
-      }
-    case "pushCounty":
-      return {
-        ...state,
-        county: action.county
-      }
-    case "pushParkId":
-      return {
-        ...state,
-        parkId: action.parkId
-      }
-    case "pushParkName":
-      return {
-        ...state,
-        parkName: action.parkName
-      }
-    case "pushCardID":
-      return {
-        ...state,
-        cardID: action.cardID
-      }
-    case "pushCardName":
-      return {
-        ...state,
-        cardName: action.cardName
-      }
-    case "pushCardKind":
-      return {
-        ...state,
-        cardKind: action.cardKind
-      }
-    case "pushCarportID":
-      return {
-        ...state,
-        carportID: action.carportID
-      }
-    case "pushCarportName":
-      return {
-        ...state,
-        carportName: action.carportName
-      }
-    case "pushCarportKind":
-      return {
-        ...state,
-        carportKind: action.carportKind
-      }
+    case "pushProvince" : {
+      return state.set('province', action.province)
+    }
+    case "pushCity" : {
+      return state.set('city', action.city)
+    }
+    case "pushCounty": {
+      return state.set('county', action.county)
+    }
+    case "pushParkId": {
+      return state.set('parkId', action. parkId)
+    }
+    case "pushParkName": {
+      return state.set('parkName', action.parkName)
+    }
+    case "pushCardID":{
+      return state.set('cardID', action.cardID)
+    }
+    case "pushCardName": {
+      return state.set('cardName', action.cardName)
+    }
+    case "pushCardKind": {
+      return state.set('cardKind', action.cardKind)
+    }
+    case "pushCarportID": {
+      return state.set('carportID', action.carportID)
+    }
+    case "pushCarportName": {
+      return state.set('carportName', action.carportName)
+    }
+    case "pushCarportKind": {
+      return state.set('carportKind', action.carportKind)
+    }
     default:
       return state;
   }

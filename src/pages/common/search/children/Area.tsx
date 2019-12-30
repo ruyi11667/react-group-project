@@ -1,20 +1,26 @@
 import React, { useState, PropsWithChildren } from "react";
 import Api from "@ajax/api";
 import Http from "@ajax/index";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Select } from "antd";
 const { Option } = Select;
 
 const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
-  const [province, setprovince] = useState();
-  const [city, setctiy] = useState();
-  const [county, setcounty] = useState();
+
+  const province = useSelector(state => (state as any).getIn(['parkingSearch', 'province']));
+  const city = useSelector(state => (state as any).getIn(['parkingSearch', 'city']));
+  const principal = useSelector(state => (state as any).getIn(['parkingSearch', 'principal']));
+  const dispatch = useDispatch();
+
+  const [provinceDom, setprovinceDom] = useState();
+  const [cityDom, setctiyDom] = useState();
+  const [countyDom, setcountyDom] = useState();
 
   // 创建选择器的dom
   const handleChildren = (data: Object & Array<Object>, type: String) => {
     switch (type) {
       case "province":
-        setprovince(
+        setprovinceDom(
           Object.entries(data).map(([key, value]) => {
             return (
               <Option key={key} value={key} title="province">
@@ -25,7 +31,7 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
         );
         break;
       case "city":
-        setctiy(
+        setctiyDom(
           data.map(item => {
             let key = Object.keys(item);
             let value = Object.values(item);
@@ -38,7 +44,7 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
         );
         break;
       case "county":
-        setcounty(
+        setcountyDom(
           data.map(item => {
             let key = Object.keys(item);
             let value = Object.values(item);
@@ -59,13 +65,13 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
   const handleChange = (value: string, option: any) => {
     switch (option.props.title) {
       case "province":
-        props.pushProvince(value);
+        dispatch({type: 'pushProvince', province: value})
         break;
       case "city":
-        props.pushCity(value);
+        dispatch({type: 'pushCity', city: value})
         break;
       case "county":
-        props.pushCounty(value);
+        dispatch({type: 'pushCounty', county: value})
       default:
         break;
     }
@@ -80,25 +86,25 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
   };
   // 市获得焦点的回调
   const cityFoc = async () => {
-    if (!props.province) {
+    if (!province) {
       return;
     }
     let {
       data: { data }
     } = await Http.get(Api.CITY, {
-      params: { provinceId: props.province }
+      params: { provinceId: province }
     });
     handleChildren(data, "city");
   };
   // 区获得焦点的回调
   const countyFoc = async () => {
-    if (!props.city) {
+    if (!city) {
       return;
     }
     let {
       data: { data }
     } = await Http.get(Api.COUNTY, {
-      params: { cityId: props.city }
+      params: { cityId: city }
     });
     handleChildren(data, "county");
   };
@@ -119,7 +125,7 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
             <Option value="0" title="province">
               请选择省
             </Option>
-            {province}
+            {provinceDom}
           </Select>
           <Select
             defaultValue="0"
@@ -128,12 +134,12 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
             onFocus={cityFoc}
             className="city"
             id="city"
-            disabled={!props.province || props.province == '0'}
+            disabled={!province || province == '0'}
           >
             <Option value="0" title="city">
               请选择市
             </Option>
-            {city}
+            {cityDom}
           </Select>
           <Select
             defaultValue="0"
@@ -142,12 +148,12 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
             onFocus={countyFoc}
             className="county"
             id="county"
-            disabled={!props.city || props.city == '0' || props.province == '0'}
+            disabled={!city || city == '0' || province == '0'}
           >
             <Option value="0" title="county">
               请选择区
             </Option>
-            {county}
+            {countyDom}
           </Select>
         </div>
       </div>
@@ -164,35 +170,5 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
   );
 };
 
-const mapStateToProps = (state: {
-  parkingSearch: { province: any; city: any; principal: any };
-}) => {
-  return {
-    province: state.parkingSearch.province,
-    city: state.parkingSearch.city,
-    principal: state.parkingSearch.principal
-  };
-};
 
-const mapDispatchToProps = (dispatch: any) => ({
-  pushProvince(str: String) {
-    dispatch({
-      type: "pushProvince",
-      province: str
-    });
-  },
-  pushCity(str: String) {
-    dispatch({
-      type: "pushCity",
-      city: str
-    });
-  },
-  pushCounty(str: String) {
-    dispatch({
-      type: "pushCounty",
-      county: str
-    });
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Area);
+export default Area;

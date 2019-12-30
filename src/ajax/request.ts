@@ -44,6 +44,7 @@ class HtttpRequest{
     // 拦截请求
     instance.interceptors.request.use((config: AxiosRequestConfig)=>{
       config.baseURL = 'http://10.20.152.69:5000';
+      // config.baseURL = 'http://localhost:5000';
       return config;
     }, (error)=>{
       return Promise.reject(error);
@@ -52,7 +53,7 @@ class HtttpRequest{
     // 拦截响应
     instance.interceptors.response.use((response: AxiosResponse)=>{
       const {data: {code, message}} = response;
-      if(code === 0){
+      if(code === '0000'){
         //成功
       }else{
         // 失败

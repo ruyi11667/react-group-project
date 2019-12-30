@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Select } from "antd";
 const { Option } = Select;
 
@@ -8,6 +8,15 @@ const handleChange = (value: string, option: any) => {
 };
 
 const Equ: React.FC<{}> = function Equ() {
+
+  const equID = useSelector(state => (state as any).getIn(['parkingSearch', 'equID']))
+  const equName = useSelector(state => (state as any).getIn(['parkingSearch', 'equName']))
+  const equIP = useSelector(state => (state as any).getIn(['parkingSearch', 'equIP']))
+  const addMan = useSelector(state => (state as any).getIn(['parkingSearch', 'addMan']))
+  const park = useSelector(state => (state as any).getIn(['parkingSearch', 'park']))
+
+  const dispatch = useDispatch();
+
   return (
     <div  style={{flex: 5}}>
       <div className="equIDBox">
@@ -45,24 +54,5 @@ const Equ: React.FC<{}> = function Equ() {
   );
 };
 
-const mapStateToProps = (state: {
-  parkingSearch: {
-    equID: any;
-    equName: any;
-    equIP: any;
-    addMan: any;
-    park: any;
-  };
-}) => {
-  return {
-    equID: state.parkingSearch.equID, // 车位卡编号
-    equName: state.parkingSearch.equName, // 车位卡名称
-    equIP: state.parkingSearch.equIP,
-    addMan: state.parkingSearch.addMan,
-    park: state.parkingSearch.park
-  };
-};
 
-const mapDispatchToProps = (state: any) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Equ);
+export default Equ;

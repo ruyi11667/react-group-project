@@ -1,12 +1,17 @@
 import React, { PropsWithChildren } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const Park: React.FC<PropsWithChildren<any>> = function Park(props) {
+
+  const parkId = useSelector(state => (state as any).getIn(['parkingSearch', 'parkId']));
+  const parkName = useSelector(state => (state as any).getIn(['parkingSearch', 'parkName']));
+  const dispatch = useDispatch();
+
   const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     if (ev.target.className === "parkID") {
-      props.pushParkId(ev.target.value);
+    dispatch({type: 'pushParkId', parkId: ev.target.value})
     } else if (ev.target.className === "parkName") {
-      props.pushParkName(ev.target.value);
+    dispatch({type: 'pushParkName', parkName: ev.target.value})
     }
   };
 
@@ -36,28 +41,5 @@ const Park: React.FC<PropsWithChildren<any>> = function Park(props) {
   );
 };
 
-const mapStateToProps = (state: {
-  parkingSearch: { parkId: any; parkName: any };
-}) => {
-  return {
-    parkId: state.parkingSearch.parkId,
-    parkName: state.parkingSearch.parkName
-  };
-};
 
-const mapDispatchToProps = (dispatch: any) => ({
-  pushParkId(str: String) {
-    dispatch({
-      type: "pushParkId",
-      parkId: str
-    });
-  },
-  pushParkName(str: String) {
-    dispatch({
-      type: "pushParkName",
-      parkName: str
-    });
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Park);
+export default Park;

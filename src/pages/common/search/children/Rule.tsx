@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Select } from "antd";
 const { Option } = Select;
 
@@ -9,6 +9,14 @@ const handleChange = (value: string, option: any) => {
 };
 
 const Rule: React.FC<{}> = function Rule() {
+
+  const ruleID = useSelector(state => (state as any).getIn(['parkingSearch', 'ruleID']));
+  const ruleName = useSelector(state => (state as any).getIn(['parkingSearch', 'ruleName']));
+  const userKind = useSelector(state => (state as any).getIn(['parkingSearch', 'userKind']));
+  const billingMode = useSelector(state => (state as any).getIn(['parkingSearch', 'billingMode']));
+  const freeTime = useSelector(state => (state as any).getIn(['parkingSearch', 'freeTime']));
+  const dispatch = useDispatch();
+
   return (
     <div style={{flex: 5}}>
       <div className="ruleIDBox">
@@ -58,17 +66,5 @@ const Rule: React.FC<{}> = function Rule() {
   );
 };
 
-const mapStateToProps = (state: { parkingSearch: { ruleID: any; ruleName: any; userKind: any; billingMode: any; freeTime: any; }; }) => {
-  return {
-    ruleID: state.parkingSearch.ruleID, // 计费规则编号
-    ruleName: state.parkingSearch.ruleName, // 计费规则名称
-    userKind: state.parkingSearch.userKind, // 用户类型（全部/临时车主/包天卡车主/时长卡车主/次卡车主）all/temporaryUser/dayUser/timeUser/cardUser
-    billingMode: state.parkingSearch.billingMode, // 计费方式（全部/时长计费/时段计费/按次计费）all/timeLong/timeSection/number
-    freeTime: state.parkingSearch.freeTime // 免费时长
-  }
-}
 
-const mapDispatchToProps = (state: any) => ({})
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Rule);
+export default Rule;
