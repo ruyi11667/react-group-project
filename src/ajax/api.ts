@@ -20,7 +20,22 @@ enum API{
     SYS_USER_DELETE = "/manager/api/user/deleteUser",
     SYS_USER_ADD = "/manager/api/user/addUser",
 
-    ALL_ROLE = "/manager/api/role/allRole"
+    ALL_ROLE = "/manager/api/role/allRole",
 
+    /*
+      省接口列表
+      参数： 无
+    */
+    PROVINCE = '/manager/api/area/province',
+    /*
+      市接口列表
+      参数： provinceId(省号)
+    */
+    CITY = '/manager/api/area/city',
+   /*
+    区接口列表
+    参数： cityId(市号)
+   */
+    COUNTY = '/manager/api/area/county',
   }
   export default API;

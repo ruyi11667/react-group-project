@@ -1,22 +1,38 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { connect } from "react-redux";
 import { Select } from "antd";
 const { Option } = Select;
 
-const handleChange = (value: string, option: any) => {
-  console.log("a", value, option);
-};
 
-const Card: React.FC<{}> = function Card() {
+const Card: React.FC<PropsWithChildren<any>> = function Card(props) {
+
+  // 获得选择器的值
+  const handleChange = (value: string) => {
+    props.pushCardKind(value)
+  };
+  // 获取输入的值
+  const changeAct = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    switch (ev.target.className) {
+      case 'cardID':
+        props.pushCardID(ev.target.value)
+        break;
+      case 'cardName':
+        props.pushCardName(ev.target.value)
+        break;
+      default:
+        break;
+    }
+  }
+
   return (
     <div  style={{flex: 3}}>
       <div className="cardIDBox">
         <span>车位卡编号：</span>
-        <input type="text" name="cardID" className="cardID" id="cardID" />
+        <input type="text" onChange={changeAct} name="cardID" className="cardID" id="cardID" />
       </div>
       <div className="cardNameBox">
         <span>车位卡名称：</span>
-        <input type="text" name="cardName" className="cardName" id="cardName" />
+        <input type="text" onChange={changeAct} name="cardName" className="cardName" id="cardName" />
       </div>
       <div className="cardKindBox">
         <span>车位卡类型：</span>
@@ -47,6 +63,25 @@ const mapStateToProps = (state: {
   };
 };
 
-const mapDispatchToProps = (state: any) => ({});
+const mapDispatchToProps = (dispatch: any) => ({
+  pushCardID (str: String) {
+    dispatch({
+      type: 'pushCardID',
+      cardID: str
+    })
+  },
+  pushCardName (str: String) {
+    dispatch({
+      type: 'pushCardName',
+      cardName: str
+    })
+  },
+  pushCardKind (str: String) {
+    dispatch({
+      type: 'pushCardKind',
+      cardKind: str
+    })
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

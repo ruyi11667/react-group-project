@@ -1,13 +1,29 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { connect } from "react-redux";
 import { Select } from "antd";
 const { Option } = Select;
 
-const handleChange = (value: string, option: any) => {
-  console.log("a", value, option);
-};
 
-const Carport: React.FC<{}> = function Carport() {
+const Carport: React.FC<PropsWithChildren<any>> = function Carport(props) {
+
+  // 获得选择器的值
+  const handleChange = (value: string) => {
+    props.pushCarportKind(value)
+  };
+  // 获取输入的值
+  const changeAct = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    switch (ev.target.className) {
+      case 'carportID':
+        props.pushCarportID(ev.target.value)
+        break;
+      case 'carportName':
+        props.pushCarportName(ev.target.value)
+        break;
+      default:
+        break;
+    }
+  }
+
   return (
     <div style={{flex: 3}}>
       <div className="carportIDBox">
@@ -17,6 +33,7 @@ const Carport: React.FC<{}> = function Carport() {
           name="carportID"
           className="carportID"
           id="carportID"
+          onChange={changeAct}
         />
       </div>
       <div className="carportNameBox">
@@ -26,6 +43,7 @@ const Carport: React.FC<{}> = function Carport() {
           name="carportName"
           className="carportName"
           id="carportName"
+          onChange={changeAct}
         />
       </div>
       <div className="carportKindBox">
@@ -57,6 +75,25 @@ const mapStateToProps = (state: {
   };
 };
 
-const mapDispatchToProps = (state: any) => ({});
+const mapDispatchToProps = (dispatch: any) => ({
+  pushCarportID(str: String){
+    dispatch({
+      type: 'pushCarportID',
+      carportID: str
+    })
+  },
+  pushCarportName(str: String){
+    dispatch({
+      type: 'pushCarportName',
+      carportName: str
+    })
+  },
+  pushCarportKind(str: String){
+    dispatch({
+      type: 'pushCarportKind',
+      carportKind: str
+    })
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Carport);

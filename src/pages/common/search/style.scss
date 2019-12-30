@@ -11,12 +11,19 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        & > div{
+          // background-color: red;
+          display: flex;
+          flex-direction: column;
+          
+        }
       }
       & > div input {
         display: inline-block;
         border: 1px solid #ccc;
         border-radius: 5px;
         height: 32px;
+        width: auto;
         outline: none;
       }
     }

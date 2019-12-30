@@ -1,50 +1,155 @@
-import React from "react";
-import address from "./../address";
+import React, { useState, PropsWithChildren } from "react";
+import Api from "@ajax/api";
+import Http from "@ajax/index";
 import { connect } from "react-redux";
 import { Select } from "antd";
 const { Option } = Select;
 
-const handleChange = (value: string, option: any) => {
-  console.log("a", value, option);
-};
+const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
+  const [province, setprovince] = useState();
+  const [city, setctiy] = useState();
+  const [county, setcounty] = useState();
 
-const children = Object.entries(address.province_list).map(([key, value]) => {
-  return (
-    <Option key={key} value={key} title="province">
-      {value}
-    </Option>
-  );
-});
+  // 创建选择器的dom
+  const handleChildren = (data: Object & Array<Object>, type: String) => {
+    switch (type) {
+      case "province":
+        setprovince(
+          Object.entries(data).map(([key, value]) => {
+            return (
+              <Option key={key} value={key} title="province">
+                {value}
+              </Option>
+            );
+          })
+        );
+        break;
+      case "city":
+        setctiy(
+          data.map(item => {
+            let key = Object.keys(item);
+            let value = Object.values(item);
+            return (
+              <Option key={key[0]} value={key[0]} title="city">
+                {value[0]}
+              </Option>
+            );
+          })
+        );
+        break;
+      case "county":
+        setcounty(
+          data.map(item => {
+            let key = Object.keys(item);
+            let value = Object.values(item);
+            return (
+              <Option key={key[0]} value={key[0]} title="county">
+                {value[0]}
+              </Option>
+            );
+          })
+        );
+        break;
+      default:
+        break;
+    }
+  };
 
-const Area: React.FC<{}> = function Area() {
+  // 获得选择器的值
+  const handleChange = (value: string, option: any) => {
+    switch (option.props.title) {
+      case "province":
+        props.pushProvince(value);
+        break;
+      case "city":
+        props.pushCity(value);
+        break;
+      case "county":
+        props.pushCounty(value);
+      default:
+        break;
+    }
+  };
+
+  // 省获得焦点的回调
+  const provinceFoc = async () => {
+    let {
+      data: { data }
+    } = await Http.get(Api.PROVINCE);
+    handleChildren(data, "province");
+  };
+  // 市获得焦点的回调
+  const cityFoc = async () => {
+    if (!props.province) {
+      return;
+    }
+    let {
+      data: { data }
+    } = await Http.get(Api.CITY, {
+      params: { provinceId: props.province }
+    });
+    handleChildren(data, "city");
+  };
+  // 区获得焦点的回调
+  const countyFoc = async () => {
+    if (!props.city) {
+      return;
+    }
+    let {
+      data: { data }
+    } = await Http.get(Api.COUNTY, {
+      params: { cityId: props.city }
+    });
+    handleChildren(data, "county");
+  };
+
   return (
-    <div style={{flex: 2}}>
+    <div style={{ flex: 3 }}>
       <div className="areaBox">
         <span>区域：</span>
-        <Select
-          defaultValue="0"
-          style={{ width: 120 }}
-          onChange={handleChange}
-          className="province"
-          id="province"
-        >
-          <Option value="0" title="province">
-            请选择省
-          </Option>
-          {children}
-        </Select>
-        <Select
-          defaultValue="0"
-          style={{ width: 120 }}
-          onChange={handleChange}
-          className="city"
-          id="city"
-        >
-          <Option value="0" title="city">
-            请选择市
-          </Option>
-          {children}
-        </Select>
+        <div>
+          <Select
+            defaultValue="0"
+            style={{ width: 120 }}
+            onChange={handleChange}
+            className="province"
+            id="province"
+            onFocus={provinceFoc}
+          >
+            <Option value="0" title="province">
+              请选择省
+            </Option>
+            {province}
+          </Select>
+          <Select
+            defaultValue="0"
+            style={{ width: 120 }}
+            onChange={handleChange}
+            onFocus={cityFoc}
+            className="city"
+            id="city"
+            disabled={!props.province || props.province == '0'}
+          >
+            <Option value="0" title="city">
+              请选择市
+            </Option>
+            {city}
+          </Select>
+          <Select
+            defaultValue="0"
+            style={{ width: 120 }}
+            onChange={handleChange}
+            onFocus={countyFoc}
+            className="county"
+            id="county"
+            disabled={!props.city || props.city == '0' || props.province == '0'}
+          >
+            <Option value="0" title="county">
+              请选择区
+            </Option>
+            {county}
+          </Select>
+        </div>
       </div>
       <div className="principalBox">
         <span>负责人</span>
@@ -69,6 +174,25 @@ const mapStateToProps = (state: {
   };
 };
 
-const mapDispatchToProps = (state: any) => ({});
+const mapDispatchToProps = (dispatch: any) => ({
+  pushProvince(str: String) {
+    dispatch({
+      type: "pushProvince",
+      province: str
+    });
+  },
+  pushCity(str: String) {
+    dispatch({
+      type: "pushCity",
+      city: str
+    });
+  },
+  pushCounty(str: String) {
+    dispatch({
+      type: "pushCounty",
+      county: str
+    });
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Area);

@@ -1,10 +1,11 @@
 import React from "react";
 
 const initialState = {
-  parkID: "", // 停车场ID
+  parkId: "", // 停车场ID
   parkName: "", // 停车场名称
   province: "", // 省
   city: "", // 市
+  county: "", // 区
   principal: "", // 负责人
   state: "", // 状态（全部，开启，关闭）all/open/off
   carportID: "", // 车库编号
@@ -28,6 +29,61 @@ const initialState = {
 
 export default (state = initialState, action: any) => {
   switch (action.type) {
+    case "pushProvince" :
+      return {
+        ...state,
+        province: action.province
+      };
+    case "pushCity" :
+      return {
+        ...state,
+        city: action.city
+      }
+    case "pushCounty":
+      return {
+        ...state,
+        county: action.county
+      }
+    case "pushParkId":
+      return {
+        ...state,
+        parkId: action.parkId
+      }
+    case "pushParkName":
+      return {
+        ...state,
+        parkName: action.parkName
+      }
+    case "pushCardID":
+      return {
+        ...state,
+        cardID: action.cardID
+      }
+    case "pushCardName":
+      return {
+        ...state,
+        cardName: action.cardName
+      }
+    case "pushCardKind":
+      return {
+        ...state,
+        cardKind: action.cardKind
+      }
+    case "pushCarportID":
+      return {
+        ...state,
+        carportID: action.carportID
+      }
+    case "pushCarportName":
+      return {
+        ...state,
+        carportName: action.carportName
+      }
+    case "pushCarportKind":
+      return {
+        ...state,
+        carportKind: action.carportKind
+      }
     default:
       return state;
   }

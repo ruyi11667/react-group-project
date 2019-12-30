@@ -59,7 +59,6 @@ const SysUser: React.FC<{}> = function SysUser() {
 
             if (roleList.size <= 0) {
                 await dispatch(getAllRole());
-
             }
 
         } catch (error) {
