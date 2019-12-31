@@ -11,31 +11,76 @@ import Card from "./children/card";
 import Equ from "./children/Equ";
 
 const Search: React.FC<PropsWithChildren<any>> = function Search(props) {
+  const parkId = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "parkId"])
+  );
+  const parkName = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "parkName"])
+  );
+  const province = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "province"])
+  );
+  const city = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "city"])
+  );
+  const county = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "county"])
+  );
+  const principal = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "principal"])
+  );
+  const state = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "state"])
+  );
+  const carportID = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "parkId"])
+  );
+  const carportName = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "carportName"])
+  );
+  const carportKind = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "carportKind"])
+  );
+  const ruleID = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "ruleID"])
+  );
+  const ruleName = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "ruleName"])
+  );
+  const userKind = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "userKind"])
+  );
+  const billingMode = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "billingMode"])
+  );
+  const freeTime = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "freeTime"])
+  );
+  const cardID = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "cardID"])
+  );
+  const cardName = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "cardName"])
+  );
+  const cardKind = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "cardKind"])
+  );
+  const equID = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "equID"])
+  );
+  const equName = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "equName"])
+  );
+  const equIP = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "equIP"])
+  );
+  const addMan = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "addMan"])
+  );
+  const park = useSelector(state =>
+    (state as any).getIn(["parkingSearch", "park"])
+  );
 
-  const parkId = useSelector(state => (state as any).getIn(['parkingSearch', 'parkId']));
-  const parkName = useSelector(state => (state as any).getIn(['parkingSearch', 'parkName']));
-  const province = useSelector(state => (state as any).getIn(['parkingSearch', 'province']));
-  const city = useSelector(state => (state as any).getIn(['parkingSearch', 'city']));
-  const county = useSelector(state => (state as any).getIn(['parkingSearch', 'county']));
-  const principal = useSelector(state => (state as any).getIn(['parkingSearch', 'principal']));
-  const state = useSelector(state => (state as any).getIn(['parkingSearch', 'state']));
-  const carportID = useSelector(state => (state as any).getIn(['parkingSearch', 'parkId']));
-  const carportName = useSelector(state => (state as any).getIn(['parkingSearch', 'carportName']));
-  const carportKind = useSelector(state => (state as any).getIn(['parkingSearch', 'carportKind']));
-  const ruleID = useSelector(state => (state as any).getIn(['parkingSearch', 'ruleID']));
-  const ruleName = useSelector(state => (state as any).getIn(['parkingSearch', 'ruleName']));
-  const userKind = useSelector(state => (state as any).getIn(['parkingSearch', 'userKind']));
-  const billingMode = useSelector(state => (state as any).getIn(['parkingSearch', 'billingMode']));
-  const freeTime = useSelector(state => (state as any).getIn(['parkingSearch', 'freeTime']));
-  const cardID = useSelector(state => (state as any).getIn(['parkingSearch', 'cardID']));
-  const cardName = useSelector(state => (state as any).getIn(['parkingSearch', 'cardName']));
-  const cardKind = useSelector(state => (state as any).getIn(['parkingSearch', 'cardKind']));
-  const equID = useSelector(state => (state as any).getIn(['parkingSearch', 'equID']));
-  const equName = useSelector(state => (state as any).getIn(['parkingSearch', 'equName']));
-  const equIP = useSelector(state => (state as any).getIn(['parkingSearch', 'equIP']));
-  const addMan = useSelector(state => (state as any).getIn(['parkingSearch', 'addMan']));
-  const park = useSelector(state => (state as any).getIn(['parkingSearch', 'park']));
-  
   const dispatch = useDispatch();
 
   const checkDom = () => {
@@ -81,30 +126,48 @@ const Search: React.FC<PropsWithChildren<any>> = function Search(props) {
   const findBtnAct = (ev: React.MouseEvent<HTMLButtonElement>) => {
     switch (props.type) {
       case "park":
-        console.log(parkId, parkName, province, city, county, principal, state)
-        break ;
+        console.log(parkId, parkName, province, city, county, principal, state);
+        break;
       case "spot":
-        console.log(parkId, parkName, carportID, carportName, carportKind, state)
-        break ;
+        console.log(
+          parkId,
+          parkName,
+          carportID,
+          carportName,
+          carportKind,
+          state
+        );
+        break;
       case "billing":
-        console.log(ruleID, ruleName, userKind, billingMode, freeTime)
-        break ;
+        console.log(ruleID, ruleName, userKind, billingMode, freeTime);
+        break;
       case "card":
-        console.log(parkId, parkName, cardID, cardName, cardKind, state)
-        break ;
+        console.log(parkId, parkName, cardID, cardName, cardKind, state);
+        break;
       case "equipment":
-        console.log(equID, equName, equIP, addMan, park, state)
-        break ;
+        console.log(equID, equName, equIP, addMan, park, state);
+        break;
       default:
-        break ;
+        break;
     }
   };
 
   // 新增按钮
   const newBtnClc = async (ev: React.MouseEvent<HTMLButtonElement>) => {
-    await dispatch({type: 'pushParkId', parkId: '12345'})
-    console.log(parkId);
-  }
+    console.log(props);
+    switch (props.type) {
+      case 'park':
+        // if(props.location.pathname === '/home' || props.location.pathname === '/' ) {
+          window.location.replace('/parking/parkManage/addNew');
+        // }
+        
+        break;
+    
+      default:
+        break;
+    }
+    // /parking/parkManage/addNew
+  };
 
   return (
     <section className="SearchBox">
@@ -114,11 +177,12 @@ const Search: React.FC<PropsWithChildren<any>> = function Search(props) {
           查询
         </Button>
         <Button type="primary">重置</Button>
-        <Button type="danger" onClick={newBtnClc}>新增{parkId}</Button>
+        <Button type="danger" onClick={newBtnClc}>
+          新增
+        </Button>
       </div>
     </section>
   );
 };
-
 
 export default Search;

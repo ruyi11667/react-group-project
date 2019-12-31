@@ -6,7 +6,7 @@ enum API{
     */
     LOGIN_API = '/manager/api/login',
 
-   /*
+    /*
       财务统计接口
       参数： start end type(out in) today 
     */
@@ -32,10 +32,20 @@ enum API{
       参数： provinceId(省号)
     */
     CITY = '/manager/api/area/city',
-   /*
-    区接口列表
-    参数： cityId(市号)
-   */
+    /*
+      区接口列表
+      参数： cityId(市号)
+    */
     COUNTY = '/manager/api/area/county',
+    /*
+      查询所有停车场
+      参数： 无
+    */
+    GET_ALL_PARK = '/manager/api/parking/allPark',
+    /*
+      分页查询停车场列表
+      参数： pageNum: 当前页数； pageSize: 单页条数
+    */
+    GET_PAGE_PARK = '/manager/api/parking/slotList'
   }
   export default API;

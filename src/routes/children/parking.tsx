@@ -5,7 +5,13 @@ const routes: RouteConfig[] = [
   
   {
     path: '/parking/parkManage',
-    component: lazy(()=>import('@pages/parking/children/parkManage'))
+    component: lazy(()=>import('@pages/parking/children/parkManage')),
+    routes: [
+      {
+        path: '/parking/parkManage/addNew',
+        component: lazy(()=>import('@pages/parking/children/parkManage/children/addNewPark'))
+      }
+    ]
   },
   {
     path: '/parking/spotManage',

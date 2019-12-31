@@ -49,7 +49,8 @@ const Parking: React.FC<PropsWithChildren<any>> = function Parking(props) {
           style={{
             background: "#fff",
             padding: "24px 20px",
-            margin: "0 10px"
+            margin: "0 10px",
+            position: 'relative'
           }}
         >
           {/* 懒加载 */}

@@ -22,6 +22,7 @@ const Park: React.FC<PropsWithChildren<any>> = function Park(props) {
         <input
           type="text"
           onChange={handleChange}
+          value={parkId}
           name="parkID"
           className="parkID"
           id="parkID"
@@ -32,6 +33,7 @@ const Park: React.FC<PropsWithChildren<any>> = function Park(props) {
         <input
           type="text"
           onChange={handleChange}
+          value={parkName}
           name="parkName"
           className="parkName"
           id="parkName"

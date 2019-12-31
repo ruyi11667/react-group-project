@@ -1,4 +1,3 @@
-import React from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
 import {combineReducers} from "redux-immutable";
 import parkingSearch from './parking/parkingSearch';

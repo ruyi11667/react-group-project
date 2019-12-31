@@ -9,6 +9,7 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
 
   const province = useSelector(state => (state as any).getIn(['parkingSearch', 'province']));
   const city = useSelector(state => (state as any).getIn(['parkingSearch', 'city']));
+  const county = useSelector(state => (state as any).getIn(['parkingSearch', 'county']));
   const principal = useSelector(state => (state as any).getIn(['parkingSearch', 'principal']));
   const dispatch = useDispatch();
 
@@ -109,6 +110,12 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
     handleChildren(data, "county");
   };
 
+  // 负责人
+  const principalInpt = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('b', ev.target.value)
+    dispatch({type: 'pushPrincipal', principal: ev.target.value})
+  }
+
   return (
     <div style={{ flex: 3 }}>
       <div className="areaBox">
@@ -116,6 +123,7 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
         <div>
           <Select
             defaultValue="0"
+            value={province}
             style={{ width: 120 }}
             onChange={handleChange}
             className="province"
@@ -129,12 +137,13 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
           </Select>
           <Select
             defaultValue="0"
+            value={city}
             style={{ width: 120 }}
             onChange={handleChange}
             onFocus={cityFoc}
             className="city"
             id="city"
-            disabled={!province || province == '0'}
+            disabled={!province || province === '0'}
           >
             <Option value="0" title="city">
               请选择市
@@ -143,12 +152,13 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
           </Select>
           <Select
             defaultValue="0"
+            value={county}
             style={{ width: 120 }}
             onChange={handleChange}
             onFocus={countyFoc}
             className="county"
             id="county"
-            disabled={!city || city == '0' || province == '0'}
+            disabled={!city || city === '0' || province === '0'}
           >
             <Option value="0" title="county">
               请选择区
@@ -161,6 +171,8 @@ const Area: React.FC<PropsWithChildren<any>> = function Area(props) {
         <span>负责人</span>
         <input
           type="text"
+          value={principal}
+          onChange={principalInpt}
           name="principalBox"
           className="principalBox"
           id="principalBox"

@@ -20,7 +20,6 @@ const Card: React.FC<PropsWithChildren<any>> = function Card(props) {
     switch (ev.target.className) {
       case 'cardID':
         dispatch({type: 'pushCardID', cardID: ev.target.value})
-        props.pushCardID(ev.target.value)
         break;
       case 'cardName':
         dispatch({type: 'pushCardName', cardName: ev.target.value})
@@ -34,16 +33,17 @@ const Card: React.FC<PropsWithChildren<any>> = function Card(props) {
     <div  style={{flex: 3}}>
       <div className="cardIDBox">
         <span>车位卡编号：</span>
-        <input type="text" onChange={changeAct} name="cardID" className="cardID" id="cardID" />
+        <input value={cardID} type="text" onChange={changeAct} name="cardID" className="cardID" id="cardID" />
       </div>
       <div className="cardNameBox">
         <span>车位卡名称：</span>
-        <input type="text" onChange={changeAct} name="cardName" className="cardName" id="cardName" />
+        <input value={cardName} type="text" onChange={changeAct} name="cardName" className="cardName" id="cardName" />
       </div>
       <div className="cardKindBox">
         <span>车位卡类型：</span>
         <Select
           defaultValue="all"
+          value={cardKind}
           style={{ width: 120 }}
           onChange={handleChange}
           className="cardKind"

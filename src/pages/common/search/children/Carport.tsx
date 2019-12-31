@@ -13,7 +13,7 @@ const Carport: React.FC<PropsWithChildren<any>> = function Carport(props) {
 
   // 获得选择器的值
   const handleChange = (value: string) => {
-        dispatch({type: 'pushCarportKind', carportKind: value})
+    dispatch({type: 'pushCarportKind', carportKind: value})
   };
   // 获取输入的值
   const changeAct = (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +36,7 @@ const Carport: React.FC<PropsWithChildren<any>> = function Carport(props) {
         <input
           type="text"
           name="carportID"
+          value={carportID}
           className="carportID"
           id="carportID"
           onChange={changeAct}
@@ -46,6 +47,7 @@ const Carport: React.FC<PropsWithChildren<any>> = function Carport(props) {
         <input
           type="text"
           name="carportName"
+          value={carportName}
           className="carportName"
           id="carportName"
           onChange={changeAct}
@@ -55,6 +57,7 @@ const Carport: React.FC<PropsWithChildren<any>> = function Carport(props) {
         <span>车库类型：</span>
         <Select
           defaultValue="all"
+          value={carportKind}
           style={{ width: 120 }}
           onChange={handleChange}
           className="carportKind"

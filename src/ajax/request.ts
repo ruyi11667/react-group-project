@@ -43,8 +43,8 @@ class HtttpRequest{
   private interceptor(instance: AxiosInstance){
     // 拦截请求
     instance.interceptors.request.use((config: AxiosRequestConfig)=>{
-      config.baseURL = 'http://10.20.152.69:5000';
-      // config.baseURL = 'http://localhost:5000';
+      // config.baseURL = 'http://10.20.152.69:5000';
+      config.baseURL = 'http://localhost:5000';
       return config;
     }, (error)=>{
       return Promise.reject(error);

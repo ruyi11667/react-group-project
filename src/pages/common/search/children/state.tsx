@@ -12,12 +12,17 @@ const StateSele: React.FC<{}> = function StateSele() {
   const state = useSelector(state => (state as any).getIn(['parkingSearch', 'state']));
   const dispatch = useDispatch();
 
+  const handleChange = (value: string) => {
+    dispatch({type: "pushState", state: value})
+  };
+
   return (
     <div style={{flex: 1}}>
       <div className="stateBox">
         <span>状态：</span>
         <Select
           defaultValue="all"
+          value={state}
           style={{ width: 120 }}
           onChange={handleChange}
           className="state"
