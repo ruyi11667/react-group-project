@@ -2,13 +2,14 @@ import React, { PropsWithChildren } from "react";
 import { Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import "./style.scss";
-import Park from "./children/park";
-import Area from "./children/Area";
-import StateSele from "./children/state";
-import Carport from "./children/Carport";
-import Rule from "./children/Rule";
-import Card from "./children/card";
-import Equ from "./children/Equ";
+import Park from './children/park'
+import Area from './children/Area'
+import StateSele from './children/state'
+import Carport from './children/Carport'
+import Rule from './children/Rule'
+import Card from './children/card'
+import Equ from './children/Equ'
+import UserCard from './children/userCard'
 
 const Search: React.FC<PropsWithChildren<any>> = function Search(props) {
   const parkId = useSelector(state =>
@@ -118,6 +119,12 @@ const Search: React.FC<PropsWithChildren<any>> = function Search(props) {
             <StateSele />
           </div>
         );
+        case "userCard":
+          return (
+            <div>
+              <UserCard/>
+            </div>
+          );
       default:
         return "";
     }
