@@ -8,6 +8,7 @@ import Carport from './children/Carport'
 import Rule from './children/Rule'
 import Card from './children/card'
 import Equ from './children/Equ'
+import UserCard from './children/userCard'
 
 import kindDom from "./kindDom";
 
@@ -49,6 +50,12 @@ const Search: React.FC<{ type: String }> = function Search({ type }) {
             <StateSele/>
           </div>
         );
+        case "userCard":
+          return (
+            <div>
+              <UserCard/>
+            </div>
+          );
       default:
         return "";
     }

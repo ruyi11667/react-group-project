@@ -31,7 +31,6 @@ function Tab(props:{[propName:string]:any}) {
 }
 
 const UserManager: React.FC<{}> = function UserManager() {
-
   const [selectIndex, setSelect] = useState(1);
   const handleChangeIndex = useCallback(
     (index:number) => {
@@ -64,7 +63,7 @@ const UserManager: React.FC<{}> = function UserManager() {
             margin: "0 10px"
           }}
         >
-          <Tab  changeIndex={handleChangeIndex} selectIndex={selectIndex} />
+          <Tab changeIndex={handleChangeIndex} selectIndex={selectIndex} />
           <Search type="card" />
           <Com></Com>
         </Content>

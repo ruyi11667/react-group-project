@@ -4,13 +4,7 @@ import { Table } from "antd";
 import  http from "../../../.././../ajax";
 import API from "../../.././../../ajax/api";
 
-
-
 const SysUser: React.FC<{}> = function SysUser() {
-
-    
-        
-
       //请求列表
       const requestList  = useCallback(
           async () => {
@@ -27,16 +21,10 @@ const SysUser: React.FC<{}> = function SysUser() {
        requestList();
     }, [requestList]);
 
-  
-
-
     return (
         <div>
             <Table />
         </div>
     )
-
-
 }
-
 export default SysUser;
